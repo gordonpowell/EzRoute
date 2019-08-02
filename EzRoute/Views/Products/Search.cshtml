@@ -1,0 +1,51 @@
+﻿@model EzRoute.Models.ViewModel.SearchViewModel
+
+
+
+
+
+
+
+
+@using (Html.BeginForm("Index", "Products", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <h4>SEARCH</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-horizontal searchform">
+       
+        <div class="form-group gridtall">
+            @Html.LabelFor(model => model.productID, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.ListBoxFor(model => model.productID, (MultiSelectList)ViewBag.productlist, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.productID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.tagID, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.tagID, (SelectList)ViewBag.taglist, "none select", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.tagID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.aisleID, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.aisleID, (SelectList)ViewBag.aislelist, "none selesct", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.aisleID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group gridwide">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Let's Shop" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+
+

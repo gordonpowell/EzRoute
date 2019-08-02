@@ -1,0 +1,62 @@
+﻿@model IEnumerable<EzRoute.Models.Product>
+
+@{
+    ViewBag.Title = "Let's Shop";
+}
+
+<!-- Banner -->
+<section id="banner">
+
+    <img src="~/images/test3.jpeg" />
+</section>
+<h2>Let's Shop</h2>
+@Html.Action("Search")
+
+
+<table class="table">
+    <tr>
+        <th>
+            Name
+        </th>
+        <th>
+           Price
+        </th>
+        <th>
+           Size
+        </th>
+        <th>
+           Number
+        </th>
+        <th>
+           Category
+        </th>
+       
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            <td>
+                $   @Html.DisplayFor(modelItem => item.price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.size)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Aisle.number)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tag.name)
+            </td>
+           
+        </tr>
+    }
+
+</table>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
